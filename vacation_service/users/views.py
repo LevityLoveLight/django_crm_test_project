@@ -1,13 +1,15 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 from .models import User
 
 
+@login_required()
 def index(request):
     template = 'users/index.html'
-    post_list = User.objects.select_related(
-    ).all()
+    users_list = User.objects.all()
+    print(users_list)
     context = {
-        # 'page_obj': posts_per_page(request, post_list),
+        'users_obj': users_list,
     }
     return render(request, template, context)

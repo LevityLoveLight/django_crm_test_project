@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}Последние обновления на сайте{% endblock %}
 {% block content %}
+    <h3>График отпусков</h3>
     <table id="example" class="table table-striped" style="width:100%">
         <thead>
             <tr>
@@ -13,27 +14,14 @@
         </thead>
         <tbody>
             {% for user in users_obj %}
-            <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>14</td>
-                <td>6</td>
-                <td>2011-04-25</td>
-            </tr>
-            <tr>
-                <td>Garrett Winters</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>63</td>
-                <td>2011-07-25</td>
-            </tr>
-            <tr>
-                <td>Ashton Cox</td>
-                <td>Junior Technical Author</td>
-                <td>San Francisco</td>
-                <td>66</td>
-                <td>2009-01-12</td>
-            </tr>
+                <tr>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.position }}</td>
+                    <td>{{ user.vacation_days }}</td>
+                    <td>{{ user.vacation_date_start }}</td>
+                    <td>{{ user.vacation_date_end }}</td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 {% endblock %}
