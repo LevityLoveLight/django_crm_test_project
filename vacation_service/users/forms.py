@@ -12,7 +12,7 @@ class UserUpdateForm(forms.ModelForm):
 
 
 class VacationUpdateForm(forms.ModelForm):
-    vacation_days = forms.IntegerField(label='Количество дней отпуска')
+    # vacation_days = forms.IntegerField(label='Количество дней отпуска')
     vacation_date_start = forms.DateField(
         label='Начало отпуска',
         widget=forms.DateInput(
@@ -22,7 +22,7 @@ class VacationUpdateForm(forms.ModelForm):
             }
         )
     )
-    vacation_date_end = forms.DateField(
+    vacation_date_end = forms.DateField(c
             label='Конец отпуска',
             widget=forms.DateInput(
                 attrs={
@@ -34,4 +34,10 @@ class VacationUpdateForm(forms.ModelForm):
 
     class Meta:
         model = Vacation
-        fields = ['vacation_days', 'vacation_date_start', 'vacation_date_end']
+        fields = ['vacation_date_start', 'vacation_date_end']
+
+    def clean(self):
+        # Определяем правило валидации
+        if self.cleaned_data.get('vacation_date_end') < self.cleaned_data.get('vacation_date_start'):
+            raise forms.ValidationError('Дата окончания отпуска должна быть больше даты начала')
+        return self.cleaned_data

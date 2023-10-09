@@ -48,6 +48,8 @@ def vacation(request):
         if v_form.is_valid():
             vacation_obj = v_form.save(commit=False)
             vacation_obj.user = request.user
+            vacation_days = vacation_obj.vacation_date_end - vacation_obj.vacation_date_start
+            vacation_obj.vacation_days = vacation_days.days
             vacation_obj.save()
             return redirect('users:vacation')
     else:
