@@ -11,11 +11,11 @@
        <form method="POST" enctype="multipart/form-data">
           {% csrf_token %}
           <fieldset class="form-group">
-              <legend class="border-bottom mb-4">Ваш профиль</legend>
-              {{ u_form|crispy }}
+              <legend class="border-bottom mb-4">Новый отпуск</legend>
+              {{ v_form|crispy }}
           </fieldset>
           <div class="form-group">
-              <button class="btn btn-outline-info" type="submit">Обновить</button>
+              <button class="btn btn-outline-info" type="submit">Добавить</button>
           </div>
       </form>
     </div>

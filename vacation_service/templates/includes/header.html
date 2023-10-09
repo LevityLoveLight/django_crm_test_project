@@ -1,10 +1,15 @@
 <header>
   <nav class="navbar navbar-light" style="background-color: lightskyblue">
-    <div class="container">
-      <h2>Отпуска</h2>
-      <li class="nav-item">
-          <a class="nav-item nav-link" href="{% url 'users:profile' %}">Профиль</a>
-      </li>
-    </div>
+     <div class="container">
+        <a class="navbar-brand mr-4" href="{% url 'users:index' %}"><i class='bx bxs-rocket bx-tada-hover'></i>Отпуска</a>
+          <!-- Правая часть навигационной панели -->
+          <div class="navbar-nav">
+            {% if user.is_authenticated %}
+              <a class="nav-item nav-link" href="{% url 'users:vacation' %}">Добавить отпуск</a>
+              <a class="nav-item nav-link" href="{% url 'users:profile' %}">Профиль</a>
+            {% endif %}
+          </div>
+        </div>
+     </div>
   </nav>
 </header>

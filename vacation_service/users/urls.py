@@ -6,7 +6,6 @@ from . import views
 app_name = 'users'
 
 urlpatterns = [
-    path('', views.index, name='index'),
     path(
         'login/',
         LoginView.as_view(
@@ -14,5 +13,7 @@ urlpatterns = [
         ),
         name='login'
     ),
+    path('', views.index, name='index'),
+    path('vacation/', views.vacation, name='vacation'),
     path('profile/', views.profile, name='profile'),
 ]
