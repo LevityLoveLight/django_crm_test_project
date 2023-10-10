@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Удаление записи</legend>
+                <h2>Вы уверены, что хотите удалить эту запись об отпуске?"</h2>
+                <input type="submit" value="Удалить">
+            </fieldset>
+        </form>
+    </div>
+{% endblock content %}

@@ -1,25 +1,37 @@
 {% extends 'base.html' %}
-{% block title %}Последние обновления на сайте{% endblock %}
+{% block title %}Сервис отпусков{% endblock %}
 {% block content %}
     <h3>График отпусков</h3>
     <table id="example" class="table table-striped" style="width:100%">
         <thead>
             <tr>
+                <th>Имя</th>
                 <th>Фамилия</th>
                 <th>Должность</th>
                 <th>Количество дней отпуска</th>
                 <th>Начало отпуска</th>
                 <th>Конец отпуска</th>
+                {% if user.is_admin %}
+                <th>Удалить запись</th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
             {% for vacation in vacation_obj %}
                 <tr>
+                    <td>{{ vacation.user.first_name }}</td>
                     <td>{{ vacation.user.last_name }}</td>
                     <td>{{ vacation.user.position }}</td>
                     <td>{{ vacation.vacation_days }}</td>
                     <td>{{ vacation.vacation_date_start }}</td>
                     <td>{{ vacation.vacation_date_end }}</td>
+                    {% if user.is_admin %}
+                    <td>
+                        <a class="btn btn-danger btn-sm mt-1 mb-1"
+                           href="{% url 'users:vacation-delete' vacation.id %}"
+                        >Удалить</a>
+                    </td>
+                    {% endif %}
                 </tr>
             {% endfor %}
         </tbody>

@@ -18,5 +18,27 @@
               <button class="btn btn-outline-info" type="submit">Добавить</button>
           </div>
       </form>
+      <table id="example" class="table table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Количество дней отпуска</th>
+                <th>Начало отпуска</th>
+                <th>Конец отпуска</th>
+                <th>Удалить запись</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vacation in users_vacations %}
+                <tr>
+                    <td>{{ vacation.vacation_days }}</td>
+                    <td>{{ vacation.vacation_date_start }}</td>
+                    <td>{{ vacation.vacation_date_end }}</td>
+                    <td>
+                        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'users:vacation-delete' vacation.id %}">Удалить</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     </div>
 {% endblock %}

@@ -4,20 +4,23 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('users', '0001_initial'),
+        ("users", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='vacation',
-            name='vacation_date_end',
-            field=models.DateField(blank=True, default=None, null=True, verbose_name='Конец отпуска'),
+            model_name="vacation",
+            name="vacation_date_end",
+            field=models.DateField(
+                blank=True, default=None, null=True, verbose_name="Конец отпуска"
+            ),
         ),
         migrations.AlterField(
-            model_name='vacation',
-            name='vacation_date_start',
-            field=models.DateField(blank=True, default=None, null=True, verbose_name='Начало отпуска'),
+            model_name="vacation",
+            name="vacation_date_start",
+            field=models.DateField(
+                blank=True, default=None, null=True, verbose_name="Начало отпуска"
+            ),
         ),
     ]

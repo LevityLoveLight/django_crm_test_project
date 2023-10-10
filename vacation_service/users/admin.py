@@ -4,12 +4,12 @@ from .models import User, Vacation
 
 
 class UserAdmin(admin.ModelAdmin):
-    list_filter = ('username',)
-    ordering = ('username',)
+    list_filter = ("username",)
+    ordering = ("username",)
 
 
 class VacationAdmin(admin.ModelAdmin):
-    ordering = ('user', )
+    ordering = ("user",)
 
 
 admin.site.register(User, UserAdmin)

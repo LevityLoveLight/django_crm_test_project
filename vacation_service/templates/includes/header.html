@@ -3,7 +3,6 @@
   <nav class="navbar navbar-light" style="background-color: lightskyblue">
      <div class="container">
         <a class="navbar-brand mr-4" href="{% url 'users:index' %}"><i class='bx bxs-rocket bx-tada-hover'></i>Отпуска</a>
-          <!-- Правая часть навигационной панели -->
           <div class="navbar-nav">
             {% if user.is_authenticated %}
             <ul class="nav justify-content-center">
@@ -11,9 +10,13 @@
                 <a class="nav-link {% if view_name  == 'users:profile' %}active{% endif %}"
                   href="{% url 'users:profile' %}">Профиль</a>
               </li>
-              <li class="nav-item m-r: 50px">
+              <li class="nav-item" style="margin-right: 30px;">
                 <a class="nav-link {% if view_name  == 'users:vacation' %}active{% endif %}"
                   href="{% url 'users:vacation' %}">Добавить отпуск</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link link-light {% if view_name  == 'users:logout' %}active{% endif %}"
+                  href="{% url 'users:logout' %}">Выйти</a>
               </li>
             </ul>
             {% endif %}
